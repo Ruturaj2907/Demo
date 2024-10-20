@@ -29,6 +29,29 @@ function addToOrder(item) {
 
     total += item.price;
     totalDisplay.textContent = total.toFixed(2);
+
+    // Save to localStorage
+    saveOrderToLocalStorage(item);
+}
+
+// Save order to localStorage
+function saveOrderToLocalStorage(item) {
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+    orders.push(item);
+    localStorage.setItem('orders', JSON.stringify(orders));
+}
+
+// Retrieve and display orders from localStorage on page load
+function displayStoredOrders() {
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+    orders.forEach(item => {
+        const orderItem = document.createElement('li');
+        orderItem.innerHTML = `${item.name} - $${item.price}`;
+        orderList.appendChild(orderItem);
+
+        total += item.price;
+        totalDisplay.textContent = total.toFixed(2);
+    });
 }
 
 document.getElementById('place-order').addEventListener('click', () => {
@@ -37,7 +60,13 @@ document.getElementById('place-order').addEventListener('click', () => {
         orderList.innerHTML = '';
         total = 0;
         totalDisplay.textContent = total;
+
+        // Clear localStorage after placing the order
+        localStorage.removeItem('orders');
     } else {
         alert('Your order is empty!');
     }
 });
+
+// Load stored orders when the page is loaded
+document.addEventListener('DOMContentLoaded', displayStoredOrders);
