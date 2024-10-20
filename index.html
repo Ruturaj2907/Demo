@@ -8,23 +8,41 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to Hotel XYZ</h1>
-        <h2>Order your favorite dishes</h2>
+        <div class="container">
+            <h1>Hotel XYZ</h1>
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#order">Order</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <div class="menu-container">
-        <h3>Menu</h3>
-        <div id="menu-list">
-            <!-- Menu items will be dynamically added here -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div id="menu-list" class="menu-grid">
+                <!-- Menu items will be dynamically inserted here -->
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="order-container">
-        <h3>Your Order</h3>
-        <ul id="order-list"></ul>
-        <p>Total: $<span id="total">0</span></p>
-        <button id="place-order">Place Order</button>
-    </div>
+    <section id="order" class="order-section">
+        <div class="container">
+            <h2>Your Order</h2>
+            <ul id="order-list"></ul>
+            <p class="total-amount">Total: $<span id="total">0</span></p>
+            <button id="place-order" class="btn">Place Order</button>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p>Contact Us: +1 234 567 890 | Email: contact@hotelxyz.com</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
